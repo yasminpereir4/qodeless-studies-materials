@@ -2,6 +2,7 @@ import { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import gql from "graphql-tag";
 import { AppModule } from "../../src/app.module";
+import { Supplier } from "../../src/entities/supplier.entity";
 import { applyAppMiddleware } from "../../src/utils/apply-app-middleware";
 import { TestClient } from "../TestClient";
 
@@ -59,6 +60,13 @@ describe("Supplier Resolver create supplier mutation", () => {
     expect(response.body.data.createSupplier).toBeDefined();
     expect(typeof response.body.data.createSupplier.id === "string").toBe(true);
     expect(response.body.data.createSupplier.name).toBe(name);
+    expect(
+      await Supplier.findOne({
+        where: {
+          id: response.body.data.createSupplier.id,
+        },
+      }),
+    ).not.toBeNull();
   });
 
   it("should not allow to create a supplier with the same name as one that already exists", async () => {

@@ -2,7 +2,29 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ChemicalMaterial {
+  createdAt: DateTime!
+  id: String!
+  name: String!
+  quantityInStock: Int!
+  supplier: Supplier
+  supplierId: String!
+  updatedAt: DateTime!
+}
+
+input CreateChemicalMaterialInput {
+  name: String!
+  quantityInStock: Float!
+  supplierId: String!
+}
+
 input CreateElectricMaterialInput {
+  name: String!
+  quantityInStock: Float!
+  supplierId: String!
+}
+
+input CreateHydraulicMaterialInput {
   name: String!
   quantityInStock: Float!
   supplierId: String!
@@ -27,25 +49,47 @@ type ElectricMaterial {
   updatedAt: DateTime!
 }
 
+type HydraulicMaterial {
+  createdAt: DateTime!
+  id: String!
+  name: String!
+  quantityInStock: Int!
+  supplier: Supplier
+  supplierId: String!
+  updatedAt: DateTime!
+}
+
 type Mutation {
+  createChemicalMaterial(input: CreateChemicalMaterialInput!): ChemicalMaterial!
   createElectricMaterial(input: CreateElectricMaterialInput!): ElectricMaterial!
+  createHydraulicMaterial(input: CreateHydraulicMaterialInput!): HydraulicMaterial!
   createSupplier(input: CreateSupplierInput!): Supplier!
+  deleteChemicalMaterial(id: ID!): Boolean!
   deleteElectricMaterial(id: ID!): Boolean!
+  deleteHydraulicMaterial(id: ID!): Boolean!
   deleteSupplier(id: ID!): Boolean!
+  updateChemicalMaterial(id: ID!, input: CreateChemicalMaterialInput!): ChemicalMaterial
   updateElectricMaterial(id: ID!, input: CreateElectricMaterialInput!): ElectricMaterial
+  updateHydraulicMaterial(id: ID!, input: CreateHydraulicMaterialInput!): HydraulicMaterial
   updateSupplier(id: ID!, input: UpdateSupplierInput!): Supplier
 }
 
 type Query {
+  chemicalMaterial(id: ID!): ChemicalMaterial
+  chemicalMaterials: [ChemicalMaterial!]!
   electricMaterial(id: ID!): ElectricMaterial
   eletricMaterials: [ElectricMaterial!]!
+  hydraulicMaterial(id: ID!): HydraulicMaterial
+  hydraulicMaterials: [HydraulicMaterial!]!
   supplier(id: ID!): Supplier
   suppliers: [Supplier!]!
 }
 
 type Supplier {
+  chemicalMaterials: [ChemicalMaterial!]
   createdAt: DateTime!
   electricMaterials: [ElectricMaterial!]
+  hydraulicMaterials: [HydraulicMaterial!]
   id: String!
   name: String!
   updatedAt: DateTime!

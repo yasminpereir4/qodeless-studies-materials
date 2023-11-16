@@ -3,13 +3,17 @@ import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import path from "node:path";
+import { ChemicalMaterialResolver } from "./graphql/resolvers/chemical-material.resolver";
 import { ElectricMaterialResolver } from "./graphql/resolvers/electric-material.resolver";
+import { HydraulicMaterialResolver } from "./graphql/resolvers/hydraulic-material.resolver";
 import { SupplierResolver } from "./graphql/resolvers/supplier.resolver";
 
 @Module({
   imports: [
     SupplierResolver,
     ElectricMaterialResolver,
+    HydraulicMaterialResolver,
+    ChemicalMaterialResolver,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       sortSchema: true,
       playground: true,

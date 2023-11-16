@@ -5,9 +5,9 @@ import { Supplier } from "./supplier.entity";
 
 @Entity()
 @ObjectType()
-export class ElectricMaterial extends MaterialBase {
+export class ChemicalMaterial extends MaterialBase {
   @Field(() => Supplier, { nullable: true })
-  @ManyToOne(() => Supplier, supplier => supplier.electricMaterials, {
+  @ManyToOne(() => Supplier, supplier => supplier.chemicalMaterials, {
     onDelete: "CASCADE",
   })
   supplier: Supplier;

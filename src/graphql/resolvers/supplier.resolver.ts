@@ -10,6 +10,8 @@ export class SupplierResolver {
     return Supplier.find({
       relations: {
         electricMaterials: true,
+        hydraulicMaterials: true,
+        chemicalMaterials: true,
       },
     });
   }
@@ -20,6 +22,8 @@ export class SupplierResolver {
       where: { id },
       relations: {
         electricMaterials: true,
+        hydraulicMaterials: true,
+        chemicalMaterials: true,
       },
     });
   }
