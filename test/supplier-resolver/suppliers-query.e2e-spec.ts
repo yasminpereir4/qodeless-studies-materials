@@ -36,6 +36,16 @@ describe("Supplier Resolver supplier query", () => {
             name
             quantityInStock
           }
+          hydraulicMaterials {
+            id
+            name
+            quantityInStock
+          }
+          chemicalMaterials {
+            id
+            name
+            quantityInStock
+          }
         }
       }
     `);
@@ -46,5 +56,7 @@ describe("Supplier Resolver supplier query", () => {
     expect(response.body.data.suppliers[0].id).toBe(supplier.id);
     expect(response.body.data.suppliers[0].name).toBe(supplier.name);
     expect(response.body.data.suppliers[0].electricMaterials).not.toBeNull();
+    expect(response.body.data.suppliers[0].hydraulicMaterials).not.toBeNull();
+    expect(response.body.data.suppliers[0].chemicalMaterials).not.toBeNull();
   });
 });

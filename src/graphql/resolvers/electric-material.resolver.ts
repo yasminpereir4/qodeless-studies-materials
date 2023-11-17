@@ -6,7 +6,7 @@ import { UpdateElectricMaterialInput } from "../inputs/update-eletric-material.i
 @Resolver(() => ElectricMaterial)
 export class ElectricMaterialResolver {
   @Query(() => [ElectricMaterial])
-  async eletricMaterials() {
+  async electricMaterials() {
     return ElectricMaterial.find({
       relations: {
         supplier: true,

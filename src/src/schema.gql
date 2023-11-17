@@ -78,7 +78,7 @@ type Query {
   chemicalMaterial(id: ID!): ChemicalMaterial
   chemicalMaterials: [ChemicalMaterial!]!
   electricMaterial(id: ID!): ElectricMaterial
-  eletricMaterials: [ElectricMaterial!]!
+  electricMaterials: [ElectricMaterial!]!
   hydraulicMaterial(id: ID!): HydraulicMaterial
   hydraulicMaterials: [HydraulicMaterial!]!
   supplier(id: ID!): Supplier
